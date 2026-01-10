@@ -1,0 +1,40 @@
+@media screen and (max-width: 800px){
+    :root {
+        --border_radius: 1%;
+    }
+    body {
+        width: 95%;
+        margin: 1em auto;
+    }
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #car {
+        position: static;
+        width: 70%;
+        img {
+            position: static;
+            width: 100%;
+            height: auto;
+            border-radius: var(--border_radius);
+        }
+    }
+
+    #car-text {
+        position: static;
+        top: auto;
+        left: auto;
+        transform: none;
+        background-color: transparent;
+        border-radius: var(--border_radius);
+        padding: 10px 20px;
+
+        img {
+            width: 50%;
+            margin: auto;
+        }
+    }
+
+}
