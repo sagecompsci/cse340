@@ -105,6 +105,7 @@ li {
 
   a {
     margin: 1em;
+    color: var(--color_text);
   }
 }
 
