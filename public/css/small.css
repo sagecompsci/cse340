@@ -14,12 +14,12 @@
     #car {
         position: static;
         width: 70%;
-        img {
-            position: static;
-            width: 100%;
-            height: auto;
-            border-radius: var(--border_radius);
-        }
+    }
+    #car img {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-radius: var(--border_radius);
     }
 
     #car-text {
@@ -30,11 +30,11 @@
         background-color: transparent;
         border-radius: var(--border_radius);
         padding: 10px 20px;
+    }
 
-        img {
-            width: 50%;
-            margin: auto;
-        }
+    #car-text img {
+        width: 50%;
+        margin: auto;
     }
 
 }
