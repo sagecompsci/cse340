@@ -37,4 +37,15 @@
         margin: auto;
     }
 
+    .detail {
+        display: block;
+    }
+
+    .detail .text {
+        width: auto;
+    }
+
+    .detail .img {
+        width: auto;
+    }
 }

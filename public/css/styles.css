@@ -33,6 +33,10 @@ body {
   font-size: 1.2em;
 }
 
+.bold {
+  font-weight: bold
+}
+
 h1, h2, #top-header {
   font-family: "quintessential", "times new roman";
 
@@ -107,4 +111,22 @@ li {
   color: var(--color_text);
 }
 
+.detail {
+  display: flex;
+  margin: 1em;
+  align-items: center;
+}
 
+.detail .text {
+  margin: 1em;
+  width: 40%;
+}
+
+.detail .img {
+  width: 60%;
+}
+
+.detail .img img {
+  width: 100%;
+  height: auto;
+}
