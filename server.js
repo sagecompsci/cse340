@@ -28,8 +28,11 @@ app.use(static)
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
-//Inventory route
+// Inventory route
 app.use("/inv", inventoryRoute)
+
+// 500 Error route
+app.get("/error", utilities.handleErrors(baseController.throwError))
 
 // File not found route
 app.use(async (req, res, next) => {
@@ -43,7 +46,9 @@ app.use(async (req, res, next) => {
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
-  if(err.status === 404){
+  if(err.status === 404) {
+    message = err.message
+  }else if(err.status === 500){
     message = err.message
   } else {message = `Oh no! There was a crash. Maybe try a different route?`}
 
