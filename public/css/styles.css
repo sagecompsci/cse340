@@ -130,3 +130,16 @@ li {
   width: 100%;
   height: auto;
 }
+
+form {
+  width: 50%;
+  margin: auto;
+  padding: 1em;
+}
+
+form input {
+  width: 80%;
+  height: 2.5em;
+  margin: 1em auto;
+  display: block;
+}

@@ -48,4 +48,11 @@
     .detail .img {
         width: auto;
     }
+
+    form {
+        width: 90%;
+    }
+    form input{
+        width: 100%
+    }
 }
