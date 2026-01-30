@@ -1,0 +1,29 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else {
+    res.redirect("/")
+}%>
+
+<%- messages() %>
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>
+
+
+<form class="border" action="/inv/add-inventory" method="post">
+    <label>Make:<input type="text" name="inv_make" required value="<%= locals.inv_make %>"></label>
+    <label>Model:<input type="text" name="inv_model" required value="<%= locals.inv_model %>"></label>
+    <label>Year:<input type="number" name="inv_year" required value="<%= locals.inv_year%>"></label>
+    <label>Description:<textarea name="inv_description" required><%= locals.inv_description%></textarea></label>
+    <label>Image:<input type="text" name="inv_image" required value="<%= locals.inv_image %>"></label>
+    <label>Thumbnail:<input type="text" name="inv_thumbnail" required value="<%= locals.inv_thumbnail%>"></label>
+    <label>Price:<input type="number" name="inv_price" required value="<%= locals.inv_price%>"></label>
+    <label>Miles:<input type="number" name="inv_miles" required value="<%= locals.inv_miles%>"></label>
+    <label>Color:<input type="text" name="inv_color" required value="<%= locals.inv_color%>"></label>
+    <%- classificationList %>
+    <input type="submit" value="Add Inventory Item">
+</form>

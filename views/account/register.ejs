@@ -16,9 +16,9 @@
 
 
 <form class="border" action="/account/register" method="post">
-    <label>First Name:<input type="text" name="account_firstname" required></label>
-    <label>Last Name:<input type="text" name="account_lastname" required></label>
-    <label>Email:<input type="email" name="account_email" required></label>
+    <label>First Name:<input type="text" name="account_firstname" required value="<%= locals.account_firstname %>"></label>
+    <label>Last Name:<input type="text" name="account_lastname" required value="<%= locals.account_lastname %>"></label>
+    <label>Email:<input type="email" name="account_email" required value="<%= locals.account_email %>"></label>
     <label>Password:<input type="password" name="account_password" required
                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"></label>
     <div>There must be at least 12 characters, one must be a number, one must be a lowercase letter, one must be a

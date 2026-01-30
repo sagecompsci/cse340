@@ -37,6 +37,10 @@ body {
   font-weight: bold
 }
 
+.block {
+  display: block
+}
+
 h1, h2, #top-header {
   font-family: "quintessential", "times new roman";
 
@@ -142,4 +146,11 @@ form input {
   height: 2.5em;
   margin: 1em auto;
   display: block;
+}
+
+form textarea {
+  display: block;
+  height: 5em;
+  width: 80%;
+  margin: 1em auto;
 }
