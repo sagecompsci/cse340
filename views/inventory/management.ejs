@@ -8,3 +8,12 @@
 
 <a class="block" href="/inv/add-classification">Add Classification</a>
 <a class="block" href="/inv/add-inventory">Add Inventory Item</a>
+
+<h2>Manage Inventory</h2>
+<p>Select classification to see inventory items belonging to that classification</p>
+
+<%- classificationList %>
+<table id="inventoryDisplay"></table>
+<noscript>Javascript must be enabled to use this page</noscript>
+
+<script src="../../js/inventory.js"></script>
