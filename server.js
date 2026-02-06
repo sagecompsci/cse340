@@ -47,6 +47,11 @@ app.use(bodyParser.urlencoded({extended: true})) // for parsing application/x-ww
 app.use(cookieParser())
 
 app.use(utilities.checkJWTToken)
+
+app.use((req,res, next) => {
+  res.locals.cookies = req.cookies;
+  next();
+})
 /* ***********************
  * View Engine and Templates
  *************************/

@@ -1,8 +1,9 @@
 const invModel = require("../models/inventory-model")
-const Util = {}
-
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
+
+const Util = {}
+
 
 /* ************************
  * Constructs the nav HTML unordered list
@@ -124,6 +125,7 @@ Util.checkLogin = (req, res, next) => {
         return res.redirect("/account/login")
     }
 }
+
 
 
 module.exports = Util

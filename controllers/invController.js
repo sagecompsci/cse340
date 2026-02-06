@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/index")
+const jwt = require("jsonwebtoken")
 
 const invCont = {}
 
@@ -146,12 +147,9 @@ invCont.updateInventory = async function (req, res) {
         inv_color: itemData.inv_color,
         classification_id: itemData.classification_id,
     })
-
-
 }
 
 invCont.editInventory = async function (req, res) {
-    let classificationSelect = await utilities.buildClassificationList()
     let nav = await utilities.getNav()
     const {inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id} = req.body
     const editResult = await invModel.editInventory(inv_id, inv_make, inv_model, inv_year, inv_description,
@@ -183,4 +181,52 @@ invCont.editInventory = async function (req, res) {
         })
     }
 }
+
+
+invCont.deleteInventoryConfirm = async function (req, res) {
+    const inv_id = parseInt(req.params.inv_id)
+    let nav = await utilities.getNav()
+    const itemData = await invModel.getByInventoryId(inv_id)
+    const itemName = `${itemData.inv_make} ${itemData.inv_model}`
+    res.render("./inventory/delete-confirm", {
+        title: "Edit " + itemName,
+        nav,
+        errors: null,
+        inv_id: itemData.inv_id,
+        inv_make: itemData.inv_make,
+        inv_model: itemData.inv_model,
+        inv_year: itemData.inv_year,
+    })
+}
+
+invCont.deleteInventory = async function (req, res) {
+    const inv_id = parseInt(req.body.inv_id)
+
+    const deleteResult = await invModel.deleteInventory(inv_id)
+
+    if (deleteResult) {
+        req.flash("notice", `The inventory item was successfully deleted.`)
+        res.redirect("/inv/")
+    } else{
+        req.flash("notice", "Sorry, the delete failed.")
+        res.redirect(`/inv/delete/${inv_id}`)
+    }
+}
+
+invCont.checkAccountType = async function (req, res, next){
+        if (req.cookies.jwt) {
+            const decoded = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET)
+
+            if (decoded.account_type === 'Employee' || decoded.account_type === 'Admin') {
+                next()
+            }
+        }
+        else {
+            req.flash("notice", "Log in as an employee or admin")
+            res.redirect("/account/login")
+        }
+}
+
+
+
 module.exports = invCont
